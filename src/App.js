@@ -1,18 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import ResponsiveAp from './MenuAppBar'
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>
-          ARCOMRED 
-        </h1>
-        <h3>
-          Soluciones Integrales a Domicilio
-        </h3>
-      </header>
+      <Container>
+        <header>
+          <ResponsiveAp></ResponsiveAp> 
+        </header>
+      </Container>
+      <main>
+        <section>
+          <h1>
+            ARCOMRED 
+          </h1>
+          <h3>
+            Soluciones Integrales a Domicilio
+          </h3>
+          <Button variant="outlined">Sigueme</Button>
+
+
+        </section>
+      </main>
     </div>
   );
 }
