@@ -12,8 +12,9 @@ import Home from './pages/index';
 import Servicios from './pages/servicios';
 import Nosotros from './pages/nosotros';
 import Contacto from './pages/contacto';
-import NavBar from './components/navBar/NavBar';
-import { Container } from '@mui/material';
+import { NavBarMobile, NavBarDesktop } from './components/navBar/NavBar';
+import { Container, useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 const navArrayLinks=[
   {
@@ -33,11 +34,20 @@ const navArrayLinks=[
 
 
 
+
+
 function App() {
+
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down('sm'));
+
+
   return (
       <BrowserRouter>
-        <NavBar navArrayLinks={navArrayLinks}></NavBar>
-        <Container>
+        {!matches && <NavBarDesktop navArrayLinks={navArrayLinks}></NavBarDesktop>}
+        {matches && <NavBarMobile navArrayLinks={navArrayLinks}></NavBarMobile>}
+        
+        <Container maxWidth="sm">
           <Routes>
             
             <Route path='/' element={<Home />} />

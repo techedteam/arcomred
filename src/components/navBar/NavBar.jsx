@@ -6,38 +6,30 @@ import MenuIcon from '@mui/icons-material/Menu';
 import LogoARP from "../Logo/LogoARP";
 
 
-export default function NavBar({navArrayLinks}){ 
-    const [open, setOpen] = useState(false);
-    const theme = createTheme(
-        {
-            palette: {
-                primary: {
-                    main:'#25516E',
-                },
+const theme = createTheme(
+    {
+        palette: {
+            primary: {
+                main:'#25516E',
             },
-        }
-    );
+        },
+    }
+);
 
+export function NavBarDesktop({navArrayLinks}){ 
     return(
         <>
             <ThemeProvider theme={theme}>
-            <AppBar position="static">
+            <AppBar position="static" color="transparent">
                 <Toolbar>
-                    <IconButton 
-                    color="inherit" 
-                    size="large" 
-                    onClick={() => setOpen(true)}
-                    sx={{display:{xs:"flex", sm:"none"}}}>
-                        <MenuIcon></MenuIcon>
-                    </IconButton>
-                    <Box justifyContent={"flex-end"}>
+                    <Box>
                         <LogoARP width={50} height={50}></LogoARP>
                     </Box>
                     <Typography variant="h6" sx={{flexGrow:1}}>
                         
                     </Typography>
                     
-                    <Box sx={{display:{xs:"none", sm:"flex"}}}>
+                    <Box>
                         {navArrayLinks.map(item => (
                             <Button 
                             color="inherit" 
@@ -50,7 +42,33 @@ export default function NavBar({navArrayLinks}){
                 </Toolbar>
             </AppBar>
             </ThemeProvider>
-            <Drawer open={open} anchor='left' onClose={() => setOpen(false)} sx={{display:{xs:"flex", sm:"none"}}}>
+            
+        </>
+    )
+}
+
+export function NavBarMobile({navArrayLinks}){ 
+    const [open, setOpen] = useState(false);
+    
+    return(
+        <>
+            <ThemeProvider theme={theme}>
+            <AppBar position="static" color="transparent">
+                <Toolbar>
+                    <IconButton 
+                    color="inherit" 
+                    size="large" 
+                    onClick={() => setOpen(true)}
+                    >
+                        <MenuIcon></MenuIcon>
+                    </IconButton>
+                    <Box sx={{ml:25}} >
+                        <LogoARP width={50} height={50}></LogoARP>
+                    </Box> 
+                </Toolbar>
+            </AppBar>
+            </ThemeProvider>
+            <Drawer open={open} anchor='left' onClose={() => setOpen(false)} >
                 <NavListDrawer navArrayLinks={navArrayLinks} setOpen={setOpen} />    
             </Drawer>
             
