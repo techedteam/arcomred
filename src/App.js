@@ -39,7 +39,7 @@ const navArrayLinks=[
 function App() {
 
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('sm'));
+  const matches = useMediaQuery(theme.breakpoints.down('md'));
 
 
   return (
@@ -47,7 +47,7 @@ function App() {
         {!matches && <NavBarDesktop navArrayLinks={navArrayLinks}></NavBarDesktop>}
         {matches && <NavBarMobile navArrayLinks={navArrayLinks}></NavBarMobile>}
         
-        <Container maxWidth="sm">
+        <Container>
           <Routes>
             
             <Route path='/' element={<Home />} />

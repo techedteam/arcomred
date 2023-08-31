@@ -20,7 +20,7 @@ export function NavBarDesktop({navArrayLinks}){
     return(
         <>
             <ThemeProvider theme={theme}>
-            <AppBar position="static" color="transparent">
+            <AppBar position="fixed" color="transparent">
                 <Toolbar>
                     <Box>
                         <LogoARP width={50} height={50}></LogoARP>

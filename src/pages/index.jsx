@@ -1,31 +1,17 @@
-import FotoHome from '../assets/home.png';
-import { EdDevCard } from '../components/Card/EdDevCard';
-import { Box, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { useMediaQuery } from '@mui/material';
+import { MainHomeMobile, MainHomeDesktop } from '../components/MainHome/MainHome';
+
 
 export default function Index() {
+    const theme = useTheme();
+    const matches =useMediaQuery(theme.breakpoints.down("md"));
+
     return (
+
         <main>
-            <section>
-                <Box sx={{alignContent:'center'}}>
-                    <Typography variant='h3'component="h1" align='center'>
-                        ARCOMRED
-                    </Typography>
-                    
-                    <img src={FotoHome} alt='Arcomred'></img>
-                    <Typography variant="h5" component="h2" align='center'>
-                        Soluciones Integrales a Domicilio
-                    </Typography>
-                        
-                    
-
-                </Box>
-
-            <Box sx={{display:'inline-flex', gap:2}}>
-                <EdDevCard></EdDevCard><EdDevCard></EdDevCard><EdDevCard></EdDevCard>
-            </Box>
-            
-
-            </section>
-      </main>
+            {!matches && <MainHomeDesktop></MainHomeDesktop>}
+            {matches && <MainHomeMobile></MainHomeMobile>}
+        </main>
     );
 }
